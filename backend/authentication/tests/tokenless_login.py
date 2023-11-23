@@ -35,6 +35,7 @@ class TokenlessLoginViewTests(APITestCase):
                 }
             )
             self.assertEqual(response.status_code, 200)
+            self.client.logout()
 
     def test_login_error(self):
         # Wrong username, email or password should return http404
@@ -73,3 +74,15 @@ class TokenlessLoginViewTests(APITestCase):
                 path=reverse_lazy('authentication:tokenless-login')
             )
             self.assertEqual(response.status_code, 405)
+    
+    def test_reconnect_error(self):
+        # Reconnect without log out should return http400
+        self.client.force_login(UserModel.objects.get(username=self.user_data['username']))
+        response = self.client.post(
+            path=reverse_lazy('authentication:tokenless-login'),
+            data={
+                'login': self.user_data['username'],
+                'password': self.user_data['password']
+            }
+        )
+        self.assertEqual(response.status_code, 400)
