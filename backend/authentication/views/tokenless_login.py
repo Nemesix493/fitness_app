@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from django.http import Http404
 from django.contrib.auth import get_user_model, authenticate, login
 
-from ..serializers.user import LoginUserSerializer
+from ..serializers import LoginUserSerializer
 
 
 UserModel = get_user_model()

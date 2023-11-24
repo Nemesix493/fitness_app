@@ -13,3 +13,8 @@ class BaseUserSerializer(serializers.ModelSerializer):
 class LoginUserSerializer(serializers.Serializer):
     login = serializers.CharField()
     password = serializers.CharField(write_only=True)
+
+
+class UpdateUserPasswordSerializer(serializers.Serializer):
+    old_password = serializers.CharField(write_only=True)
+    new_password = serializers.CharField(write_only=True)
