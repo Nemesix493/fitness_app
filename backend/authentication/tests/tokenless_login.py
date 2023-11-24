@@ -23,7 +23,7 @@ class TokenlessLoginViewTests(APITestCase):
         user_test.set_password(self.user_data['password'])
         user_test.save()
         return super().setUp()
-    
+
     def test_login_success(self):
         # Success login should return http200
         for login in [self.user_data['username'], self.user_data['email']]:
@@ -74,7 +74,7 @@ class TokenlessLoginViewTests(APITestCase):
                 path=reverse_lazy('authentication:tokenless-login')
             )
             self.assertEqual(response.status_code, 405)
-    
+
     def test_reconnect_error(self):
         # Reconnect without log out should return http400
         self.client.force_login(UserModel.objects.get(username=self.user_data['username']))

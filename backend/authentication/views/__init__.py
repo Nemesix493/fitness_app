@@ -1,1 +1,1 @@
-from .tokenless_login import TokenlessLoginView
+from .tokenless_login import TokenlessLoginView  # noqa: F401
