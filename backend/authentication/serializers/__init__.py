@@ -1,1 +1,1 @@
-from .user import LoginUserSerializer, UpdateUserPasswordSerializer  # noqa: F401
+from .user import LoginUserSerializer, UpdateUserPasswordSerializer, ManageUserSerializer  # noqa: F401

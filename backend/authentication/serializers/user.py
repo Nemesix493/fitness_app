@@ -18,3 +18,9 @@ class LoginUserSerializer(serializers.Serializer):
 class UpdateUserPasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(write_only=True)
     new_password = serializers.CharField(write_only=True)
+
+
+class ManageUserSerializer(BaseUserSerializer):
+    class Meta(BaseUserSerializer.Meta):
+        fields = ['id', 'username', 'first_name', 'last_name', 'email']
+        read_only_fields = ['email']
