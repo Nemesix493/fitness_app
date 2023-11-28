@@ -51,11 +51,7 @@ class TokenlessLoginViewTests(BaseAuthenticationTest):
             self.client.patch,
             self.client.put
         ]
-        for http_verb in http_verbs:
-            response = http_verb(
-                path=self.paths['tokenless_login']
-            )
-            self.assertEqual(response.status_code, 405)
+        self.check_error_method(http_verbs, self.paths['tokenless_login'])
 
     def test_reconnect_error(self):
         # Reconnect without log out should return http400

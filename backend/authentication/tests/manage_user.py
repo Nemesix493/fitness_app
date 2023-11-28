@@ -89,7 +89,4 @@ class TestManageUser(BaseAuthenticationTest):
     def test_other_method_error(self):
         # Any other HTTP verb should return http405
         self.client.force_login(self.user_test)
-        response = self.client.delete(
-            path=self.paths['manage_self_user']
-        )
-        self.assertEqual(response.status_code, 405)
+        self.check_error_method([self.client.delete], self.paths['manage_self_user'])

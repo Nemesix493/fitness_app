@@ -38,3 +38,8 @@ class BaseAuthenticationTest(APITestCase, abc.ABC):
             key: reverse_lazy(val)
             for key, val in cls.paths_name.items()
         }
+
+    def check_error_method(self, methods, path):
+        for http_verb in methods:
+            response = http_verb(path)
+            self.assertEqual(response.status_code, 405)

@@ -59,8 +59,4 @@ class TestUpdatePassword(BaseAuthenticationTest):
             self.client.put
         ]
         self.client.force_login(self.user_test)
-        for http_verb in http_verbs:
-            response = http_verb(
-                path=self.paths['update_password']
-            )
-            self.assertEqual(response.status_code, 405)
+        self.check_error_method(http_verbs, self.paths['update_password'])
