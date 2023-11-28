@@ -3,7 +3,7 @@ from .base_authentication import BaseAuthenticationTest
 
 class TestManageUser(BaseAuthenticationTest):
     paths_name = {
-        'manage_self_user': 'authentication:manage-user'
+        'manage_self_user': 'authentication:self:manage-user'
     }
 
     def test_get_user_success(self):

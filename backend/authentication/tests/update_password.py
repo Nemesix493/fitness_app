@@ -3,7 +3,7 @@ from .base_authentication import BaseAuthenticationTest
 
 class TestUpdatePassword(BaseAuthenticationTest):
     paths_name = {
-        'update_password': 'authentication:update-password'
+        'update_password': 'authentication:self:update-password'
     }
 
     def test_update_success(self):
